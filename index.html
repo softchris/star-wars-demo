@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Wars Memorabilia Vault</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <h1 class="app-title">Star Wars Memorabilia Vault</h1>
+    <p class="app-tagline">Track and manage your galaxy-spanning collection</p>
+  </header>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="stat">
+      <span class="stat-value" id="stat-total">0</span>
+      <span class="stat-label">Total Items</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value" id="stat-value">$0</span>
+      <span class="stat-label">Est. Value</span>
+    </div>
+    <div class="stat-categories" id="stat-categories"></div>
+  </section>
+
+  <!-- Toolbar -->
+  <section class="toolbar">
+    <button class="btn btn-primary" id="btn-add">+ Add Item</button>
+
+    <input type="text" class="search-input" id="search-input" placeholder="Search by name…">
+
+    <select class="filter-select" id="filter-category">
+      <option value="">All Categories</option>
+      <option value="Action Figures">Action Figures</option>
+      <option value="Lightsabers">Lightsabers</option>
+      <option value="Posters">Posters</option>
+      <option value="Vehicles/Ships">Vehicles/Ships</option>
+      <option value="Helmets/Masks">Helmets/Masks</option>
+      <option value="Books/Comics">Books/Comics</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <select class="filter-select" id="filter-condition">
+      <option value="">All Conditions</option>
+      <option value="Mint">Mint</option>
+      <option value="Near Mint">Near Mint</option>
+      <option value="Good">Good</option>
+      <option value="Fair">Fair</option>
+      <option value="Poor">Poor</option>
+    </select>
+
+    <select class="filter-select" id="sort-select">
+      <option value="name-asc">Name A–Z</option>
+      <option value="name-desc">Name Z–A</option>
+      <option value="date-desc">Newest First</option>
+      <option value="date-asc">Oldest First</option>
+      <option value="price-desc">Price High–Low</option>
+      <option value="price-asc">Price Low–High</option>
+    </select>
+  </section>
+
+  <!-- Item Grid -->
+  <main class="item-grid" id="item-grid"></main>
+
+  <!-- Empty State -->
+  <div class="empty-state" id="empty-state" style="display:none;">
+    <p>No items found. Start building your collection!</p>
+  </div>
+
+  <!-- Add/Edit Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <h2 class="modal-title" id="modal-title">Add Item</h2>
+      <form id="item-form">
+        <input type="hidden" id="form-id">
+
+        <div class="form-group">
+          <label for="form-name">Name *</label>
+          <input type="text" id="form-name" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="form-category">Category *</label>
+            <select id="form-category" required>
+              <option value="">Select…</option>
+              <option value="Action Figures">Action Figures</option>
+              <option value="Lightsabers">Lightsabers</option>
+              <option value="Posters">Posters</option>
+              <option value="Vehicles/Ships">Vehicles/Ships</option>
+              <option value="Helmets/Masks">Helmets/Masks</option>
+              <option value="Books/Comics">Books/Comics</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="form-condition">Condition *</label>
+            <select id="form-condition" required>
+              <option value="">Select…</option>
+              <option value="Mint">Mint</option>
+              <option value="Near Mint">Near Mint</option>
+              <option value="Good">Good</option>
+              <option value="Fair">Fair</option>
+              <option value="Poor">Poor</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="form-date">Acquisition Date</label>
+            <input type="date" id="form-date">
+          </div>
+          <div class="form-group">
+            <label for="form-price">Est. Value ($)</label>
+            <input type="number" id="form-price" min="0" step="0.01" placeholder="0.00">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="form-image">Image URL</label>
+          <input type="url" id="form-image" placeholder="https://…">
+        </div>
+
+        <div class="form-group">
+          <label for="form-notes">Notes</label>
+          <textarea id="form-notes" rows="3" placeholder="Any additional details…"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="btn-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
